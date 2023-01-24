@@ -1,0 +1,193 @@
+---
+title: "Week_4_FLS_assignment"
+author: "Todd Garner"
+date: "2023-01-21"
+output: 
+  word_document: 
+    toc: yes
+  html_document: 
+    toc: yes
+    highlight: espresso
+    theme: spacelab
+    number_sections: yes
+  pdf_document: 
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# FLS - Week 4
+
+## FLS Page 2 - Run the file "Unit_4_Web_Scraping.R"
+
+Run the example code in the file Unit 4 Web Scraping.R  This will help tremendously with the web scraping in Part 1.  You will have to learn the grep and grepl functions which I think you will find very useful and we will extend on in the future.   (1 hour)
+
+I opened the existing/provided file and copied and pasted into the R code chunks below.  Let's see how we do!
+
+#Live Session 4 For Live Session Web Scraping Code
+
+
+```{r}
+#install.packages("XML")
+library(XML) #xml_Parse
+library(dplyr)
+library(tidyr)
+library(stringi)
+library(rvest) #html_table, html_node
+library(ggplot2)
+#install.packages("RCurl")
+library(RCurl) #getURL
+```
+
+#Basics of Scraping XML
+
+# Method 1: XML
+
+```{r}
+data <-getURL("https://www.w3schools.com/xml/simple.xml")
+doc <- xmlParse(data)
+names <- xpathSApply(doc,"//name",xmlValue)
+price <- xpathSApply(doc,"//price",xmlValue)
+description <- xpathSApply(doc,"//description",xmlValue)
+bfasts = data.frame(names,price,description)
+bfasts
+bfasts$description
+length(grep("covered",bfasts$description))
+grepl("covered",bfasts$description)
+sum(grepl("covered",bfasts$description))
+which(grepl("covered",bfasts$description))
+```
+
+
+
+
+# Method 2: rvest
+
+```{r}
+hp<-read_html("https://www.w3schools.com/xml/simple.xml")
+hp_nameR <- html_nodes(hp,"name")
+hp_priceR <- html_nodes(hp,"price")
+hp_descR <- html_nodes(hp,"description")
+hp_nameR
+hp_name = stri_sub(hp_nameR,7,-8)
+hp_name
+hp_price = stri_sub(hp_priceR,8,-9)
+hp_price
+hp_desc = stri_sub(hp_descR,14,-15)
+hp_desc
+bfast = data.frame(hp_name,hp_price,hp_desc)
+grep("toast", bfast$hp_desc)
+grepl("toast",bfast$hp_desc)
+
+sum(grepl("toast",bfast$hp_desc))
+```
+# Part 1: Restaurant Data from Baltimore!
+
+**Note: one of the methods learned in the last unit will work with the the improper XML code that the URL below yields and the other will create an error.  Use one to get the job done.**
+
+  *You have been hired by a restaurateur to do some research on Sushi restaurants in Baltimore.*
+	*You have come across data on the web contained in the following XML file.*   	
+	*Data: https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml*
+
+	1. Scrape the XML page for name, zipcode and city council district.  (Use either the XML or rvest package.) <
+	>>>>>>>>>DONE
+	2. Make a dataframe with just those columns.  
+	>>>>>>>>>DONE
+	3. Are there any Sushi restaurants in Baltimore? (Where the dataset is from.)
+	  a. If so, can you estimate how many?
+
+To solve question 3, what makes sense is to search the names column we just created for the word "sushi."  We should use "ignore.case = TRUE" and count the number of times the word sushi appears.  We can study the data results. 
+
+  >>>>>>>> There appears to be 9 occurences of the word "sushi" in the names column.  Perhaps we should search for other possible sushi restaurant names.  I appear to have discovered a very cool way of displaying text.  The right pointing "pointer" repeated reveals interesting results as seen in the knitted .html file result.  Candidly, that's hard to believe that there are only 9 sushi restaurants in Baltimore.  I think I need to dig deeper....somehow.  
+  
+I substituted alternative names for "sushi" like tempura, hibachi, hibatchi, sashimi, to no avail.  I went to Google and searched "How many sushi restaurants are there in Baltimore."  My first result was, "Top 10 sushi restaurants in Baltimore."  If there was a category "Description" I think this would make all the difference in the world.  But, with the data available, it appears that there are 9 with the word sushi in the restaurant name.  This is altogether unsatisfying as I'm virtually certain there are more.  I'm going to add neighborhood to my results in a separate column.  Chinatown may or may not be an indicator and at this point I'm not sure how it would be utilized.  
+
+At that point, it makes sense to count the number of occurrences of districts.  This "may" be telling in that sushi may be found in "restaurant row" or in certain Asian neighborhoods or near certain businesses like "high tech" or the like.  Let's find out!  Result:  Not much help.  
+
+
+	
+```{r}
+# 	1. Scrape the XML page for name, zipcode and city council district.  (Use either the XML or rvest package.)
+
+data <-getURL("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml")
+doc <- xmlParse(data)
+#doc
+names <- xpathSApply(doc,"//name",xmlValue)
+zipcode <- xpathSApply(doc,"//zipcode",xmlValue)
+councildistrict <- xpathSApply(doc,"//councildistrict",xmlValue)
+neighborhood <- xpathSApply(doc,"//neighborhood",xmlValue)
+area = data.frame(names,zipcode,councildistrict)
+head(area)
+head(area$names)
+#area$neighborhood
+length(grep("sushi",area$names, ignore.case = TRUE))
+length(grep("sashimi",area$names, ignore.case = TRUE))
+length(grep("asian",area$neighborhood, ignore.case = TRUE))
+#grepl("sushi",area$names)
+sum(grepl("sushi",area$names))
+which(grepl("sushi",area$names))
+
+```
+```{r}
+head(area$names)
+head(area$neighborhood)
+length(grep("sushi",area$names, ignore.case = TRUE))
+length(grep("sashimi",area$names, ignore.case = TRUE))
+length(grep("asian",area$neighborhood, ignore.case = TRUE))
+head(grepl("sushi",area$names))
+sum(grepl("sushi",area$names))
+which(grepl("sushi",area$names))
+```
+
+
+
+## 4. Filter the dataframe for just downtown restaurants (Council District 11). 
+	
+
+```{r}
+
+area_11 <- area[area$councildistrict == "11",] 
+head(area_11)
+
+```
+There are 277 total restaurants in District 11.	
+	
+## 5. Are there any Sushi restaurants downtown?  # research the “grep” function
+	
+```{r}
+length(grep("sushi",area_11, ignore.case = TRUE))
+
+```
+>>>>>>>>>>>>There appears to be one with the word sushi in the restaurant name.  Once again, it's unimaginable to me that there is only one sushi restaurant in downtown Baltimore.  If there was a description of the business, I believe the search would be much more fruitful.  
+	
+## 6. If so, estimate how many “Sushi” restaurants are in Downtown
+	
+>>>>>>>>>>>>From the data available, it would appear that there is only one sushi restaurant in Downtown Baltimore.  
+	
+## 7. Make a barplot of the estimated number of restaurants (Sushi or otherwise) in each council.
+	
+```{r}
+unique(area$councildistrict)
+
+```
+There appears to be 13 districts.  I need to get the names of the restaurants AND the individual districts and then length (to count) and then once defined, use ggplot to plot a bar graph showing the number of restaurants in each district.  
+
+```{r}
+list <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
+#final_sushi < list
+#Dist_sushi <- data.frame(area$councildistrict)
+#Dist_sushi <- data.frame(Dist_sushi)
+for (list in 1:length(list)) {
+#grep(list, area$councildistrict == list)
+District_sushi <- length(grep("sushi",area$names, ignore.case = TRUE, value = FALSE))
+#append(Dist_sushi, District_sushi)
+print(paste(District_sushi))
+#append(District_sushi, area$councildistrict)
+}
+head(District_sushi)
+#area_11 <- area[area$councildistrict == "11",] 
+
+```
+These names do not have the word sushi in them, but I'll keep working on it to refine it.  I must admit I'm stumped by this one.  I need a match to a name in one column, based on the value in another column.  Seems easy enough, but here we are.  I feel like I should know this.  

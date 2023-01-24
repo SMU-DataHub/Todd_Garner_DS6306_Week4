@@ -1,0 +1,799 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Week\_4\_FLS\_assignment},
+  pdfauthor={Todd Garner},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Week\_4\_FLS\_assignment}
+\author{Todd Garner}
+\date{2023-01-21}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{fls---week-4}{%
+\section{FLS - Week 4}\label{fls---week-4}}
+
+\hypertarget{fls-page-2---run-the-file-unit_4_web_scraping.r}{%
+\subsection{FLS Page 2 - Run the file
+``Unit\_4\_Web\_Scraping.R''}\label{fls-page-2---run-the-file-unit_4_web_scraping.r}}
+
+Run the example code in the file Unit 4 Web Scraping.R This will help
+tremendously with the web scraping in Part 1. You will have to learn the
+grep and grepl functions which I think you will find very useful and we
+will extend on in the future. (1 hour)
+
+I opened the existing/provided file and copied and pasted into the R
+code chunks below. Let's see how we do!
+
+\#Live Session 4 For Live Session Web Scraping Code
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("XML")}
+\FunctionTok{library}\NormalTok{(XML) }\CommentTok{\#xml\_Parse}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyr)}
+\FunctionTok{library}\NormalTok{(stringi)}
+\FunctionTok{library}\NormalTok{(rvest) }\CommentTok{\#html\_table, html\_node}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\CommentTok{\#install.packages("RCurl")}
+\FunctionTok{library}\NormalTok{(RCurl) }\CommentTok{\#getURL}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'RCurl'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:tidyr':
+## 
+##     complete
+\end{verbatim}
+
+\#Basics of Scraping XML
+
+\hypertarget{method-1-xml}{%
+\section{Method 1: XML}\label{method-1-xml}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}}\FunctionTok{getURL}\NormalTok{(}\StringTok{"https://www.w3schools.com/xml/simple.xml"}\NormalTok{)}
+\NormalTok{doc }\OtherTok{\textless{}{-}} \FunctionTok{xmlParse}\NormalTok{(data)}
+\NormalTok{names }\OtherTok{\textless{}{-}} \FunctionTok{xpathSApply}\NormalTok{(doc,}\StringTok{"//name"}\NormalTok{,xmlValue)}
+\NormalTok{price }\OtherTok{\textless{}{-}} \FunctionTok{xpathSApply}\NormalTok{(doc,}\StringTok{"//price"}\NormalTok{,xmlValue)}
+\NormalTok{description }\OtherTok{\textless{}{-}} \FunctionTok{xpathSApply}\NormalTok{(doc,}\StringTok{"//description"}\NormalTok{,xmlValue)}
+\NormalTok{bfasts }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(names,price,description)}
+\NormalTok{bfasts}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                         names price
+## 1             Belgian Waffles $5.95
+## 2  Strawberry Belgian Waffles $7.95
+## 3 Berry-Berry Belgian Waffles $8.95
+## 4                French Toast $4.50
+## 5         Homestyle Breakfast $6.95
+##                                                                           description
+## 1                   Two of our famous Belgian Waffles with plenty of real maple syrup
+## 2                   Light Belgian waffles covered with strawberries and whipped cream
+## 3 Light Belgian waffles covered with an assortment of fresh berries and whipped cream
+## 4                                 Thick slices made from our homemade sourdough bread
+## 5                 Two eggs, bacon or sausage, toast, and our ever-popular hash browns
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bfasts}\SpecialCharTok{$}\NormalTok{description}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Two of our famous Belgian Waffles with plenty of real maple syrup"                  
+## [2] "Light Belgian waffles covered with strawberries and whipped cream"                  
+## [3] "Light Belgian waffles covered with an assortment of fresh berries and whipped cream"
+## [4] "Thick slices made from our homemade sourdough bread"                                
+## [5] "Two eggs, bacon or sausage, toast, and our ever-popular hash browns"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{grep}\NormalTok{(}\StringTok{"covered"}\NormalTok{,bfasts}\SpecialCharTok{$}\NormalTok{description))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grepl}\NormalTok{(}\StringTok{"covered"}\NormalTok{,bfasts}\SpecialCharTok{$}\NormalTok{description)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE  TRUE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{"covered"}\NormalTok{,bfasts}\SpecialCharTok{$}\NormalTok{description))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{"covered"}\NormalTok{,bfasts}\SpecialCharTok{$}\NormalTok{description))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 3
+\end{verbatim}
+
+\hypertarget{method-2-rvest}{%
+\section{Method 2: rvest}\label{method-2-rvest}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hp}\OtherTok{\textless{}{-}}\FunctionTok{read\_html}\NormalTok{(}\StringTok{"https://www.w3schools.com/xml/simple.xml"}\NormalTok{)}
+\NormalTok{hp\_nameR }\OtherTok{\textless{}{-}} \FunctionTok{html\_nodes}\NormalTok{(hp,}\StringTok{"name"}\NormalTok{)}
+\NormalTok{hp\_priceR }\OtherTok{\textless{}{-}} \FunctionTok{html\_nodes}\NormalTok{(hp,}\StringTok{"price"}\NormalTok{)}
+\NormalTok{hp\_descR }\OtherTok{\textless{}{-}} \FunctionTok{html\_nodes}\NormalTok{(hp,}\StringTok{"description"}\NormalTok{)}
+\NormalTok{hp\_nameR}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## {xml_nodeset (5)}
+## [1] <name>Belgian Waffles</name>
+## [2] <name>Strawberry Belgian Waffles</name>
+## [3] <name>Berry-Berry Belgian Waffles</name>
+## [4] <name>French Toast</name>
+## [5] <name>Homestyle Breakfast</name>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hp\_name }\OtherTok{=} \FunctionTok{stri\_sub}\NormalTok{(hp\_nameR,}\DecValTok{7}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in stri_sub(hp_nameR, 7, -8): argument is not an atomic vector; coercing
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hp\_name}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Belgian Waffles"             "Strawberry Belgian Waffles" 
+## [3] "Berry-Berry Belgian Waffles" "French Toast"               
+## [5] "Homestyle Breakfast"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hp\_price }\OtherTok{=} \FunctionTok{stri\_sub}\NormalTok{(hp\_priceR,}\DecValTok{8}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in stri_sub(hp_priceR, 8, -9): argument is not an atomic vector;
+## coercing
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hp\_price}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "$5.95" "$7.95" "$8.95" "$4.50" "$6.95"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hp\_desc }\OtherTok{=} \FunctionTok{stri\_sub}\NormalTok{(hp\_descR,}\DecValTok{14}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in stri_sub(hp_descR, 14, -15): argument is not an atomic vector;
+## coercing
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hp\_desc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Two of our famous Belgian Waffles with plenty of real maple syrup"                  
+## [2] "Light Belgian waffles covered with strawberries and whipped cream"                  
+## [3] "Light Belgian waffles covered with an assortment of fresh berries and whipped cream"
+## [4] "Thick slices made from our homemade sourdough bread"                                
+## [5] "Two eggs, bacon or sausage, toast, and our ever-popular hash browns"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bfast }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(hp\_name,hp\_price,hp\_desc)}
+\FunctionTok{grep}\NormalTok{(}\StringTok{"toast"}\NormalTok{, bfast}\SpecialCharTok{$}\NormalTok{hp\_desc)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grepl}\NormalTok{(}\StringTok{"toast"}\NormalTok{,bfast}\SpecialCharTok{$}\NormalTok{hp\_desc)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE FALSE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{"toast"}\NormalTok{,bfast}\SpecialCharTok{$}\NormalTok{hp\_desc))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\hypertarget{part-1-restaurant-data-from-baltimore}{%
+\section{Part 1: Restaurant Data from
+Baltimore!}\label{part-1-restaurant-data-from-baltimore}}
+
+\textbf{Note: one of the methods learned in the last unit will work with
+the the improper XML code that the URL below yields and the other will
+create an error. Use one to get the job done.}
+
+\emph{You have been hired by a restaurateur to do some research on Sushi
+restaurants in Baltimore.} \emph{You have come across data on the web
+contained in the following XML file.}\\
+\emph{Data:
+\url{https://d396qusza40orc.cloudfront.net/getdata\%2Fdata\%2Frestaurants.xml}}
+
+\begin{verbatim}
+1. Scrape the XML page for name, zipcode and city council district.  (Use either the XML or rvest package.) <
+>>>>>>>>>DONE
+2. Make a dataframe with just those columns.  
+>>>>>>>>>DONE
+3. Are there any Sushi restaurants in Baltimore? (Where the dataset is from.)
+  a. If so, can you estimate how many?
+\end{verbatim}
+
+To solve question 3, what makes sense is to search the names column we
+just created for the word ``sushi.'' We should use ``ignore.case =
+TRUE'' and count the number of times the word sushi appears. We can
+study the data results.
+
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+There appears to be 9 occurences of the word ``sushi'' in the names
+column. Perhaps we should search for other possible sushi restaurant
+names. I appear to have discovered a very cool way of displaying text.
+The right pointing ``pointer'' repeated reveals interesting results as
+seen in the knitted .html file result. Candidly, that's hard to believe
+that there are only 9 sushi restaurants in Baltimore. I think I need to
+dig deeper\ldots.somehow.
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+
+I substituted alternative names for ``sushi'' like tempura, hibachi,
+hibatchi, sashimi, to no avail. I went to Google and searched ``How many
+sushi restaurants are there in Baltimore.'' My first result was, ``Top
+10 sushi restaurants in Baltimore.'' If there was a category
+``Description'' I think this would make all the difference in the world.
+But, with the data available, it appears that there are 9 with the word
+sushi in the restaurant name. This is altogether unsatisfying as I'm
+virtually certain there are more. I'm going to add neighborhood to my
+results in a separate column. Chinatown may or may not be an indicator
+and at this point I'm not sure how it would be utilized.
+
+At that point, it makes sense to count the number of occurrences of
+districts. This ``may'' be telling in that sushi may be found in
+``restaurant row'' or in certain Asian neighborhoods or near certain
+businesses like ``high tech'' or the like. Let's find out! Result: Not
+much help.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#   1. Scrape the XML page for name, zipcode and city council district.  (Use either the XML or rvest package.)}
+
+\NormalTok{data }\OtherTok{\textless{}{-}}\FunctionTok{getURL}\NormalTok{(}\StringTok{"https://d396qusza40orc.cloudfront.net/getdata\%2Fdata\%2Frestaurants.xml"}\NormalTok{)}
+\NormalTok{doc }\OtherTok{\textless{}{-}} \FunctionTok{xmlParse}\NormalTok{(data)}
+\CommentTok{\#doc}
+\NormalTok{names }\OtherTok{\textless{}{-}} \FunctionTok{xpathSApply}\NormalTok{(doc,}\StringTok{"//name"}\NormalTok{,xmlValue)}
+\NormalTok{zipcode }\OtherTok{\textless{}{-}} \FunctionTok{xpathSApply}\NormalTok{(doc,}\StringTok{"//zipcode"}\NormalTok{,xmlValue)}
+\NormalTok{councildistrict }\OtherTok{\textless{}{-}} \FunctionTok{xpathSApply}\NormalTok{(doc,}\StringTok{"//councildistrict"}\NormalTok{,xmlValue)}
+\NormalTok{neighborhood }\OtherTok{\textless{}{-}} \FunctionTok{xpathSApply}\NormalTok{(doc,}\StringTok{"//neighborhood"}\NormalTok{,xmlValue)}
+\NormalTok{area }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(names,zipcode,councildistrict)}
+\FunctionTok{head}\NormalTok{(area)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   names zipcode councildistrict
+## 1                   410   21206               2
+## 2                  1919   21231               1
+## 3                 SAUTE   21224               1
+## 4    #1 CHINESE KITCHEN   21211              14
+## 5 #1 chinese restaurant   21223               9
+## 6             19TH HOLE   21218              14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(area}\SpecialCharTok{$}\NormalTok{names)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "410"                   "1919"                  "SAUTE"                
+## [4] "#1 CHINESE KITCHEN"    "#1 chinese restaurant" "19TH HOLE"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#area$neighborhood}
+\FunctionTok{length}\NormalTok{(}\FunctionTok{grep}\NormalTok{(}\StringTok{"sushi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names, }\AttributeTok{ignore.case =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{grep}\NormalTok{(}\StringTok{"sashimi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names, }\AttributeTok{ignore.case =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{grep}\NormalTok{(}\StringTok{"asian"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{neighborhood, }\AttributeTok{ignore.case =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#grepl("sushi",area$names)}
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{"sushi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{"sushi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(area}\SpecialCharTok{$}\NormalTok{names)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "410"                   "1919"                  "SAUTE"                
+## [4] "#1 CHINESE KITCHEN"    "#1 chinese restaurant" "19TH HOLE"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(area}\SpecialCharTok{$}\NormalTok{neighborhood)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NULL
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{grep}\NormalTok{(}\StringTok{"sushi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names, }\AttributeTok{ignore.case =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{grep}\NormalTok{(}\StringTok{"sashimi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names, }\AttributeTok{ignore.case =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{grep}\NormalTok{(}\StringTok{"asian"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{neighborhood, }\AttributeTok{ignore.case =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{"sushi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{"sushi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{"sushi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+
+\hypertarget{filter-the-dataframe-for-just-downtown-restaurants-council-district-11.}{%
+\subsection{4. Filter the dataframe for just downtown restaurants
+(Council District
+11).}\label{filter-the-dataframe-for-just-downtown-restaurants-council-district-11.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_11 }\OtherTok{\textless{}{-}}\NormalTok{ area[area}\SpecialCharTok{$}\NormalTok{councildistrict }\SpecialCharTok{==} \StringTok{"11"}\NormalTok{,] }
+\FunctionTok{head}\NormalTok{(area\_11)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                     names zipcode councildistrict
+## 15       A TASTE OF CHINA   21202              11
+## 16  ABACROMBIE FINE FOODS   21201              11
+## 22       AKBAR RESTAURANT   21201              11
+## 29      BAY ATLANTIC CLUB   21212              11
+## 33                BEDROCK   21201              11
+## 34 BEDROCK (KITCHEN AREA)   21201              11
+\end{verbatim}
+
+There are 277 total restaurants in District 11.
+
+\hypertarget{are-there-any-sushi-restaurants-downtown-research-the-grep-function}{%
+\subsection{5. Are there any Sushi restaurants downtown? \# research the
+``grep''
+function}\label{are-there-any-sushi-restaurants-downtown-research-the-grep-function}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{grep}\NormalTok{(}\StringTok{"sushi"}\NormalTok{,area\_11, }\AttributeTok{ignore.case =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+There appears to be one with the word sushi in the restaurant name. Once
+again, it's unimaginable to me that there is only one sushi restaurant
+in downtown Baltimore. If there was a description of the business, I
+believe the search would be much more fruitful.
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+
+\hypertarget{if-so-estimate-how-many-sushi-restaurants-are-in-downtown}{%
+\subsection{6. If so, estimate how many ``Sushi'' restaurants are in
+Downtown}\label{if-so-estimate-how-many-sushi-restaurants-are-in-downtown}}
+
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+From the data available, it would appear that there is only one sushi
+restaurant in Downtown Baltimore.
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+
+\hypertarget{make-a-barplot-of-the-estimated-number-of-restaurants-sushi-or-otherwise-in-each-council.}{%
+\subsection{7. Make a barplot of the estimated number of restaurants
+(Sushi or otherwise) in each
+council.}\label{make-a-barplot-of-the-estimated-number-of-restaurants-sushi-or-otherwise-in-each-council.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{unique}\NormalTok{(area}\SpecialCharTok{$}\NormalTok{councildistrict)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "2"  "1"  "14" "9"  "13" "7"  "10" "5"  "11" "6"  "12" "3"  "4"  "8"
+\end{verbatim}
+
+There appears to be 13 districts. I need to get the names of the
+restaurants AND the individual districts and then length (to count) and
+then once defined, use ggplot to plot a bar graph showing the number of
+restaurants in each district.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{)}
+\CommentTok{\#final\_sushi \textless{} list}
+\CommentTok{\#Dist\_sushi \textless{}{-} data.frame(area$councildistrict)}
+\CommentTok{\#Dist\_sushi \textless{}{-} data.frame(Dist\_sushi)}
+\ControlFlowTok{for}\NormalTok{ (list }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(list)) \{}
+\CommentTok{\#grep(list, area$councildistrict == list)}
+\NormalTok{District\_sushi }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(}\FunctionTok{grep}\NormalTok{(}\StringTok{"sushi"}\NormalTok{,area}\SpecialCharTok{$}\NormalTok{names, }\AttributeTok{ignore.case =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{value =} \ConstantTok{FALSE}\NormalTok{))}
+\CommentTok{\#append(Dist\_sushi, District\_sushi)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(District\_sushi))}
+\CommentTok{\#append(District\_sushi, area$councildistrict)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+## [1] "9"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(District\_sushi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#area\_11 \textless{}{-} area[area$councildistrict == "11",] }
+\end{Highlighting}
+\end{Shaded}
+
+These names do not have the word sushi in them, but I'll keep working on
+it to refine it. I must admit I'm stumped by this one. I need a match to
+a name in one column, based on the value in another column. Seems easy
+enough, but here we are. I feel like I should know this.
+
+\end{document}
